@@ -25,7 +25,7 @@ echo "Registering device as an agent..."
 RESPONSE=$(curl -X POST \
   --header 'Content-Type: application/json' \
   --data "{\"Name\":\"My Device\",\"URL\":\"http://localhost:9001\",\"EndpointID\":\"$AGENT_KEY\"}" \
-  http://localhost:9000/api/agent_instances)
+  http://10.20.4.173:9000/api/agent_instances)
 
 if [[ $RESPONSE == *"Error"* ]]; then
   echo "Error occurred while registering the device as an agent:"
