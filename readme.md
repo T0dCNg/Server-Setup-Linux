@@ -2,8 +2,12 @@
 wget https://raw.githubusercontent.com/T0dCNg/Server-Setup-Linux/main/setup.sh
 ```
 ```bash
-chmod +x setup.sh
+sudo bash setup.sh
+```
+
+```bash
+wget https://raw.githubusercontent.com/T0dCNg/Server-Setup-Linux/main/setup.sh
 ```
 ```bash
-./setup.sh
+sudo bash setup_prometheus.sh
 ```
