@@ -12,12 +12,18 @@ done
 
 echo "Running Portainer agent container..."
 sudo docker run -d \
-  -p 9001:9001 \
-  --name portainer_agent \
-  --restart=always \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /var/lib/docker/volumes:/var/lib/docker/volumes \
+  -v /:/host \
+  -v portainer_agent_data:/data \
+  --restart always \
+  -e EDGE=1 \
+  -e EDGE_ID=$PORTAINER_EDGE_ID \
+  -e EDGE_KEY=aHR0cHM6Ly9wb3J0YWluZXIubmV0LW5vdmljZS5jb218cG9ydGFpbmVyLm5ldC1ub3ZpY2UuY29tOjkwMDB8NDE6YmU6OTQ6N2M6ZDQ6YTY6Zjc6MGQ6YTg6MjE6NDI6ZGU6MDk6ZjU6ZjA6N2F8MA \
+  -e EDGE_INSECURE_POLL=1 \
+  --name portainer_edge_agent \
   portainer/agent:2.18.3
+  
 
 echo "Waiting for Portainer agent to start..."
 sleep 5
