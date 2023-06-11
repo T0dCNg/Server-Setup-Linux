@@ -4,7 +4,11 @@ echo "Updating and upgrading packages..."
 sudo apt update && sudo apt upgrade -y
 
 echo "Installing necessary packages..."
-sudo apt install docker samba docker.io docker-compose -y
+packages=("docker" "samba" "docker.io" "docker-compose" "telnet" "git" "lsof")
+
+for package in "${packages[@]}"; do
+  sudo apt install "$package" -y
+done
 
 echo "Running Portainer agent container..."
 sudo docker run -d \
